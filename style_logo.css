@@ -1,0 +1,96 @@
+
+
+.logo {
+  /*An inline svg‘s viewport is established by the height and width specified
+  on the root <svg> element. Once the width and height attributes are removed,
+  all browsers assume a width equal to 100% and stretch the SVG horizontally to
+  fit the width of its container.
+  The way to make the inline SVG fluid in this case is by using the padding hack */
+    width: 50%;
+    height: 0;
+    padding-top: 48%;
+    position: relative;
+}
+
+circle {
+  fill: rgba(150, 48, 90, .8);
+  stroke: #000;
+  stroke-width: 50%;
+  /* 2π × radio ≈ 1257 */ /* π = (355/113) */
+  /* stroke-dasharray: 1 1257; */
+  stroke-dasharray: 1 calc(25% * 2 * (355/113));
+  animation: fillup 5s linear infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.timer {
+  transform: rotate(-90deg);
+  background: rgba(150, 48, 90, 1);
+  border-radius: 50%;
+  position: absolute;
+  top:2.5%;
+  left:50%; /*centered on the screen*/
+}
+
+@keyframes fillup {
+  to {
+    stroke-dasharray: 1257 1257;
+  }
+}
+
+.letters {
+  position: absolute; /*needed to overlay circle*/
+  z-index: 5;
+  /*to center letters in the middle of circle*/
+  top:-15%;
+  left:55%;
+}
+
+.path {
+  stroke: #FBFBFB;
+  fill: #FBFBFB;
+  fill-opacity: 0;
+}
+
+.letter1 {
+  stroke-dasharray: 680;
+  stroke-dashoffset: 680;
+  animation: anim2 0.7s linear 2s forwards, anim4 1s linear 3s forwards;
+}
+
+@keyframes anim2 {
+  0% {
+    stroke-dashoffset: 680;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.letter2 {
+  stroke-dasharray: 910;
+  stroke-dashoffset: 910;
+  animation: anim3 0.7s linear 2s forwards, anim4 1s linear 3s forwards;
+}
+
+@keyframes anim3 {
+  0% {
+    stroke-dashoffset: 910;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes anim4 {
+  0% {
+    fill-opacity: 0;
+  }
+
+  100% {
+    fill-opacity: 1;
+  }
+}
