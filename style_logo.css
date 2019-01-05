@@ -6,10 +6,14 @@
   all browsers assume a width equal to 100% and stretch the SVG horizontally to
   fit the width of its container.
   The way to make the inline SVG fluid in this case is by using the padding hack */
-    width: 50%;
+    width: 35%;
     height: 0;
     padding-top: 48%;
     position: relative;
+      /*centered on the screen*/
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
 }
 
 circle {
@@ -29,22 +33,17 @@ circle {
   background: rgba(150, 48, 90, 1);
   border-radius: 50%;
   position: absolute;
-  top:2.5%;
-  left:50%; /*centered on the screen*/
 }
 
 @keyframes fillup {
   to {
-    stroke-dasharray: 1257 1257;
+    stroke-dasharray: calc(25% * 2 * (355/113)) calc(25% * 2 * (355/113));
   }
 }
 
 .letters {
   position: absolute; /*needed to overlay circle*/
   z-index: 5;
-  /*to center letters in the middle of circle*/
-  top:-15%;
-  left:55%;
 }
 
 .path {
