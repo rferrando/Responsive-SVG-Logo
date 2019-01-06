@@ -1,5 +1,4 @@
-
-
+/* Sylesheet for Logo component */
 .logo {
   /*An inline svg‘s viewport is established by the height and width specified
   on the root <svg> element. Once the width and height attributes are removed,
@@ -14,36 +13,51 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -100%);
+    -webkit-transform: translate(-50%, -100%);
+}
+.logo:hover circle	{
+ 	 -webkit-animation-play-state: paused;
+ 	         animation-play-state: paused;
 }
 
 circle {
   fill: rgba(150, 48, 90, .8);
   stroke: #000;
-  stroke-width: 50%;
-  /* 2π × radio ≈ 1257 */ /* π = (355/113) */
-  /* stroke-dasharray: 1 1257; */
-  stroke-dasharray: 1 calc(25% * 2 * (355/113));
-  animation: fillup 5s linear infinite;
+  stroke-width: 32;
+  stroke-dasharray: 0 100;
+  -webkit-animation: fillup 5s linear infinite;
+          animation: fillup 5s linear infinite;
+
   position: relative;
   z-index: 2;
 }
 
 .timer {
-  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+
   background: rgba(150, 48, 90, 1);
   border-radius: 50%;
   position: absolute;
+  width: 100%
+}
+
+@-webkit-keyframes fillup {
+  to {
+    stroke-dasharray: 100px 100px;
+  }
 }
 
 @keyframes fillup {
   to {
-    stroke-dasharray: calc(25% * 2 * (355/113)) calc(25% * 2 * (355/113));
+    stroke-dasharray: 100px 100px;
   }
 }
 
 .letters {
   position: absolute; /*needed to overlay circle*/
   z-index: 5;
+  width: 100%
 }
 
 .path {
@@ -55,7 +69,19 @@ circle {
 .letter1 {
   stroke-dasharray: 680;
   stroke-dashoffset: 680;
-  animation: anim2 0.7s linear 2s forwards, anim4 1s linear 3s forwards;
+  -webkit-animation: anim2 0.7s linear 2s forwards, anim4 1s linear 3s forwards;
+          animation: anim2 0.7s linear 2s forwards, anim4 1s linear 3s forwards;
+
+}
+
+@-webkit-keyframes anim2 {
+  0% {
+    stroke-dashoffset: 680;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes anim2 {
@@ -71,7 +97,18 @@ circle {
 .letter2 {
   stroke-dasharray: 910;
   stroke-dashoffset: 910;
-  animation: anim3 0.7s linear 2s forwards, anim4 1s linear 3s forwards;
+  -webkit-animation: anim3 0.7s linear 2s forwards, anim4 1s linear 3s forwards;
+          animation: anim3 0.7s linear 2s forwards, anim4 1s linear 3s forwards;
+}
+
+@-webkit-keyframes anim3 {
+  0% {
+    stroke-dashoffset: 910;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes anim3 {
@@ -81,6 +118,16 @@ circle {
 
   100% {
     stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes anim4 {
+  0% {
+    fill-opacity: 0;
+  }
+
+  100% {
+    fill-opacity: 1;
   }
 }
 
